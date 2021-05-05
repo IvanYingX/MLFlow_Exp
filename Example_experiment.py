@@ -24,7 +24,13 @@ model_dict = {n:model for n, model in zip(model_names, model_list)}
 clf = model_dict[args.model]
 
 X, y = load_breast_cancer(return_X_y=True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=args.test_size)
+X, X_test, y, y_test = train_test_split(X, y, test_size=args.test_size)
 
 kf = KFold(n_splits=args.fold)
+kf.get_n_splits(X)
+print(len(X))
+for train_index, valid_index in kf.split(X):
+    X_train, X_validation = X[train_index], X[valid_index]
+    y_train, y_validation = y[train_index], y[valid_index]
 
+clf.fit(X_train, y_train)
