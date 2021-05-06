@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import SGDClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn.metrics import accuracy_score
 
 parser = argparse.ArgumentParser(description='Predict breast cancer')
 parser.add_argument('--model', type=str, help='The model to use', action='store')
