@@ -1,0 +1,26 @@
+name: ML Project
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      fold: {type: int, default: 5}
+      test_size: {type: float, default: 0.2}
+      verbosity: {type: int, default: 1}
+      penalty: {type: str, default: 'l2'}
+      C: {type: float, default: 1.0}
+      alpha: {type: float, default: 0.0001}
+      neighbors: {type: int, default: 5}
+      knn_weight: {type: str, default: 'uniform'}
+      n_estimator: {type: int, default: 100}
+      min_split: {type: int, default: 2}
+      min_leaf: {type: int, default: 1}
+      learning_rate: {type: float, default: 1}
+    command: "python main.py --model RandomForestClassifier \
+              --fold {fold} --test_size {test_size} \
+              -v {verbosity} --penalty {penalty} \
+              --C {C} --alpha {alpha} --neighbors {neighbors} \
+              --knn_weight {knn_weight} --n_estimator {n_estimator} \
+              --min_split {min_split} --min_leaf {min_leaf} \
+              -lr {learning_rate}"
